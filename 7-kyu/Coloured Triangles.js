@@ -23,3 +23,24 @@ The input string will only contain the uppercase letters R, G, B and there will 
 If you are only given one colour as the input, return that colour.
 Adapted from the 2017 British Informatics Olympiad
  */
+
+function triangle(row) {
+  while (row.length > 1) {
+    let result = '';
+    for (let i = 0; i < row.length - 1; i++) {
+      if (row[i] === row[i + 1]) {
+        result += row[i];
+      } else {
+        result += getComplimentaryColour(row[i], row[i + 1]);
+      }
+    }
+    row = result;
+  }
+  return row;
+}
+
+function getComplimentaryColour(c1, c2) {
+  if ((c1 === 'B' && c2 === 'G') || (c1 === 'G' && c2 === 'B')) return 'R';
+  if ((c1 === 'R' && c2 === 'G') || (c1 === 'G' && c2 === 'R')) return 'B';
+  if ((c1 === 'R' && c2 === 'B') || (c1 === 'B' && c2 === 'R')) return 'G';
+}
