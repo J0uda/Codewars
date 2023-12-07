@@ -9,3 +9,8 @@ coordinates(90,1)
 coordinates(45, 1)
 => (0.7071067812, 0.7071067812)
  */
+
+function coordinates(d, r) {
+  var θ = (d * Math.PI) / 180;
+  return [+(r * Math.cos(θ)).toFixed(10), +(r * Math.sin(θ)).toFixed(10)];
+}
