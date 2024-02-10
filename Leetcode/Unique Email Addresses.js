@@ -32,3 +32,20 @@ All local and domain names are non-empty.
 Local names do not start with a '+' character.
 Domain names end with the ".com" suffix.
  */
+
+/**
+ * @param {string[]} emails
+ * @return {number}
+ */
+var numUniqueEmails = function (emails) {
+  let result = [];
+  for (email of emails) {
+    let [localName, domainName] = email.split('@');
+    let name =
+      localName.split('+').shift().split('.').join('') + '@' + domainName;
+    if (result.indexOf(name) < 0) {
+      result.push(name);
+    }
+  }
+  return result.length;
+};
